@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Modal, Button, Row, Col, Form} from 'react-bootstrap';
+import { variables } from './Variables';
 
 export class AddDepModal extends Component{
     constructor(props){
@@ -9,7 +10,7 @@ export class AddDepModal extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        fetch(process.env.REACT_APP_API+'department',{
+        fetch(variables.API_URL+'department',{
             method:'POST',
             headers:{
                 'Accept':'application/json',

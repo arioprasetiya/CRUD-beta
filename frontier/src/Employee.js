@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Table} from 'react-bootstrap';
+import { variables } from './Variables';
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddEmpModal} from './AddEmpModal';
@@ -13,7 +14,7 @@ export class Employee extends Component{
     }
 
     refreshList(){
-        fetch(process.env.REACT_APP_API+'employee')
+        fetch(variables.API_URL+'employee')
         .then(response=>response.json())
         .then(data=>{
             this.setState({emps:data});
@@ -24,17 +25,10 @@ export class Employee extends Component{
         this.refreshList();
     }
 
-    componentDidUpdate(){
-        this.refreshList();
-    }
-    
-    componentWillUnmount(){
-        this.refreshList();
-    }
 
     deleteEmp(empid){
         if(window.confirm('Are you sure?')){
-            fetch(process.env.REACT_APP_API+'employee/'+empid,{
+            fetch(variables.API_URL+'employee/'+empid,{
                 method:'DELETE',
                 header:{'Accept':'application/json',
             'Content-Type':'application/json'}

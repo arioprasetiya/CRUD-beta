@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Table} from 'react-bootstrap';
+import { variables } from './Variables';
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddDepModal} from './AddDepModal';
@@ -13,7 +14,7 @@ export class Department extends Component{
     }
 
     refreshList(){
-        fetch(process.env.REACT_APP_API+'department')
+        fetch(variables.API_URL+'department')
         .then(response=>response.json())
         .then(data=>{
             this.setState({deps:data});
@@ -24,17 +25,9 @@ export class Department extends Component{
         this.refreshList();
     }
 
-    componentDidUpdate(){
-        this.refreshList();
-    }
-
-    componentWillUnmount(){
-        this.refreshList();
-    }
-
     deleteDep(depid){
         if(window.confirm('Are you sure?')){
-            fetch(process.env.REACT_APP_API+'department/'+depid,{
+            fetch(variables.API_URL+'department/'+depid,{
                 method:'DELETE',
                 header:{'Accept':'application/json',
             'Content-Type':'application/json'}

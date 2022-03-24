@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Modal,Button, Row, Col, Form,Image} from 'react-bootstrap';
+import { variables } from './Variables';
 
 export class AddEmpModal extends Component{
     constructor(props){
@@ -10,10 +11,10 @@ export class AddEmpModal extends Component{
     }
 
     photofilename = "anonymous.png";
-    imagesrc = process.env.REACT_APP_PHOTOPATH+this.photofilename;
+    imagesrc = variables.PHOTO_URL+this.photofilename;
 
     componentDidMount(){
-        fetch(process.env.REACT_APP_API+'department')
+        fetch(variables.API_URL+'department')
         .then(response=>response.json())
         .then(data=>{
             this.setState({deps:data});
@@ -22,7 +23,7 @@ export class AddEmpModal extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        fetch(process.env.REACT_APP_API+'employee',{
+        fetch(variables.API_URL+'employee',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -57,13 +58,13 @@ export class AddEmpModal extends Component{
             event.target.files[0].name
         );
 
-        fetch(process.env.REACT_APP_API+'Employee/SaveFile',{
+        fetch(variables.API_URL+'Employee/SaveFile',{
             method:'POST',
             body:formData
         })
         .then(res=>res.json())
         .then((result)=>{
-            this.imagesrc=process.env.REACT_APP_PHOTOPATH+result;
+            this.imagesrc=variables.PHOTO_URL+result;
         },
         (error)=>{
             alert('Failed');
