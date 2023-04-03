@@ -11,4 +11,9 @@ An attempt to create a full stack web application using ASP.NET combined with Re
 
 Good learning material overall, but a bit annoying due a minor differences in the version causing everything to go FUBAR
 
+Things that can be worked on
+- Database, changed it to something else that is easier to use, maybe Mongo
+- React is pain, not a fan of javascript so
+- Full stack microsoft is possible using Blazor + asp net as frontend backend solution, database can use something easier to scale like mongo
+
 Source: https://youtu.be/ON-Z1iD6Y-c (base resource, modified after to use .NET6)
