@@ -11,4 +11,4 @@ An attempt to create a full stack web application using ASP.NET combined with Re
 
 Good learning material overall, but a bit annoying due a minor differences in the version causing everything to go FUBAR
 
-Source: 
+Source: https://youtu.be/ON-Z1iD6Y-c (base resource, modified after to use .NET6)
